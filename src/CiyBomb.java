@@ -15,7 +15,7 @@ public class CiyBomb
 		int maxbombs = getIntInput("Enter number of bomb runs: ");
 		cityHealth[0] = getIntInput("Enter the cities HP (Int): ");
 
-		for (int i = 1; i < NumberOfCities; i++)
+		for (int i = 1; i < NumberOfCities; i++) 
 		{
 			cityHealth[i] = cityHealth[0];
 		}
