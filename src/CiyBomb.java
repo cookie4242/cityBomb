@@ -31,9 +31,9 @@ public class CiyBomb
 		}
 		
 		
-		int x = (98 + 54 * 63 + 43 * 324 * 21);
+	//	int x = (98 + 54 * 63 + 43 * 324 * 21);
 		
-		System.out.print(x);
+		//System.out.print(x);
 	}
 	
 	
@@ -41,7 +41,7 @@ public class CiyBomb
 	public static void PrintCityHealth(int[] cities, int numOfCtys) 
 	{
 		for(int i = 0; i  < numOfCtys; i++)
-			System.out.printf("%6d", cities[i]);
+			System.out.printf("%9d", cities[i]);
 		System.out.println(" ");
 	}
 	
