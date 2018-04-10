@@ -11,25 +11,27 @@ public class CiyBomb
 	public static void main(String[] args) 
 	{
 		int NumberOfCities = getIntInput("Enter number of cities: ");
-		//int[] cityHealth = new int[NumberOfCities];
-		ArrayList<Integer> cityHealth = new ArrayList<Integer>();
+		ArrayList<Integer> cityHealths = new ArrayList<Integer>();
 		int maxBlast = getIntInput("Enter bomb damage: ");
 		int maxbombs = getIntInput("Enter number of bomb runs: ");
-		cityHealth.add(getIntInput("Enter the cities HP (Int): "));
+		cityHealths.add(getIntInput("Enter the cities HP (Int): "));
 
 		for (int i = 1; i < NumberOfCities; i++) 
 		{
-			cityHealth.add(cityHealth.get(0));
+			cityHealths.add(cityHealths.get(0));
 		}
-		PrintCityHealth(cityHealth);
+		PrintCityHealth(cityHealths);
 		
 		for(int i = 1; i < maxbombs; i++)
 		{
-			for(int i2 = 0; i2 < NumberOfCities; i2++)
+//			for(int i2 = 0; i2 < NumberOfCities; i2++)
+			for (Integer health : cityHealths)
 			{
 				//cityHealth[i2] = cityHealth[i2] - bomb(maxBlast);
-				cityHealth.set(i2, cityHealth.get(i2) - bomb(maxBlast));
-			}			PrintCityHealth(cityHealth);
+				//cityHealths.set(i2, cityHealths.get(i2) - bomb(maxBlast));
+				health = health - bomb(maxBlast);
+			}			
+			PrintCityHealth(cityHealths);
 		}
 	}
 	
