@@ -10,38 +10,60 @@ public class CiyBomb
 
 	public static void main(String[] args) 
 	{
-		int NumberOfCities = getIntInput("Enter number of cities: ");
-		ArrayList<Integer> cityHealths = new ArrayList<Integer>();
-		int maxBlast = getIntInput("Enter bomb damage: ");
-		int maxbombs = getIntInput("Enter number of bomb runs: ");
-		cityHealths.add(getIntInput("Enter the cities HP (Int): "));
-
-		for (int i = 1; i < NumberOfCities; i++) 
+		//int NumberOfCities = getIntInput("Enter number of cities: ");
+		ArrayList<City> cityStats = new ArrayList<City>();
+		int maxBlast = 55;//getIntInput("Enter bomb damage: ");
+		int maxbombs = 5;//getIntInput("Enter number of bomb runs: ");
+		int startCityHealth = 233; //(getIntInput("Enter the cities HP (Int): "));
+		
+		
+		 
+		City city1 = new City("Blacksburg", startCityHealth, true);
+		City city2 = new City("Christiansburg" ,startCityHealth, true);
+		City city3 = new City("Radford" ,startCityHealth, true);
+		City city4 = new City("Roanoke" ,startCityHealth, true);
+		
+		
+		cityStats.add(city1);
+		cityStats.add(city2);
+		cityStats.add(city3);
+		cityStats.add(city4);
+		
+		//cityStats.add("radford", 233, true);
+		//city.
+	/*	for (int i = 1; i < NumberOfCities; i++) 
 		{
-			cityHealths.add(cityHealths.get(0));
+			cityStats.add(cityStats.get(0));
 		}
-		PrintCityHealth(cityHealths);
+		*/
+		PrintCityHealth(cityStats);
 		
 		for(int i = 1; i < maxbombs; i++)
 		{
 //			for(int i2 = 0; i2 < NumberOfCities; i2++)
-			for (Integer health : cityHealths)
+			for (City city : cityStats)
 			{
 				//cityHealth[i2] = cityHealth[i2] - bomb(maxBlast);
 				//cityHealths.set(i2, cityHealths.get(i2) - bomb(maxBlast));
-				health = health - bomb(maxBlast);
+				city.health = city.health - bomb(maxBlast);
+	//			health = health - 1;//bomb(maxBlast);
 			}			
-			PrintCityHealth(cityHealths);
+			PrintCityHealth(cityStats);
 		}
 	}
 	
+
 	
-	
-	public static void PrintCityHealth(ArrayList cities) 
+	public static void PrintCityHealth(ArrayList<City> cities) 
 	{
-		for(int i = 0; i  < cities.size(); i++)
-			System.out.printf("%9d", cities.get(i));
+		//for(int i = 0; i  < cities.size(); i++)
+		for(City city : cities)
+		{
+			System.out.printf("%9d", city.health);
+			System.out.printf("%9s", city.name);
+		}
 		System.out.println(" ");
+
 	}
 	
 	public static int bomb(int x)
