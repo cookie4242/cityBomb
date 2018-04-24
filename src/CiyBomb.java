@@ -12,8 +12,9 @@ public class CiyBomb
 	{
 		//int NumberOfCities = getIntInput("Enter number of cities: ");
 		ArrayList<City> cityStats = new ArrayList<City>();
+		ArrayList<City> deadCities = new ArrayList<City>(); 
 		int maxBlast = 55;//getIntInput("Enter bomb damage: ");
-		int maxbombs = 5;//getIntInput("Enter number of bomb runs: ");
+		int maxbombs = 9;//getIntInput("Enter number of bomb runs: ");
 		int startCityHealth = 233; //(getIntInput("Enter the cities HP (Int): "));
 		
 		
@@ -28,39 +29,49 @@ public class CiyBomb
 		cityStats.add(city2);
 		cityStats.add(city3);
 		cityStats.add(city4);
+	//	cityStats.remove("Radford");
+		printCityName(cityStats);
+		System.out.println("");
+		printCityHealth(cityStats);
 		
-		//cityStats.add("radford", 233, true);
-		//city.
-	/*	for (int i = 1; i < NumberOfCities; i++) 
-		{
-			cityStats.add(cityStats.get(0));
-		}
-		*/
-		PrintCityHealth(cityStats);
 		
 		for(int i = 1; i < maxbombs; i++)
 		{
-//			for(int i2 = 0; i2 < NumberOfCities; i2++)
 			for (City city : cityStats)
 			{
-				//cityHealth[i2] = cityHealth[i2] - bomb(maxBlast);
-				//cityHealths.set(i2, cityHealths.get(i2) - bomb(maxBlast));
 				city.health = city.health - bomb(maxBlast);
-	//			health = health - 1;//bomb(maxBlast);
-			}			
-			PrintCityHealth(cityStats);
+				if (city.health <= 0)
+				{
+					city.isAlive = false;
+					deadCities.add(city);
+				}
+			}
+			
+			if (deadCities.isEmpty() == false)
+			{
+				
+				for(City city : deadCities)
+				{
+					System.out.println(city.name + city.health);
+					cityStats.remove(city.name);
+					printCityName(cityStats);
+                    // empty deadCities
+				}
+			}
+			printCityHealth(cityStats);
+			
 		}
+		
 	}
 	
 
 	
-	public static void PrintCityHealth(ArrayList<City> cities) 
+	public static void printCityHealth(ArrayList<City> cities) 
 	{
 		//for(int i = 0; i  < cities.size(); i++)
 		for(City city : cities)
 		{
-			System.out.printf("%9d", city.health);
-			System.out.printf("%9s", city.name);
+			System.out.printf("%20d", city.health);
 		}
 		System.out.println(" ");
 
@@ -99,6 +110,17 @@ public class CiyBomb
 		
 		return 0;
 	}
+	
+	
+	public static void printCityName(ArrayList<City> cities)
+	{
+		for(City city : cities)
+		{
+			System.out.printf("%20s", city.name);
+		}
+		
+	}
+  
 	
 }
 
